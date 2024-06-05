@@ -8,7 +8,7 @@ import (
 func main() {
 	var choice int
 
-	for {
+	for choice != 10 {
 		fmt.Println("_________________________")
 		fmt.Println("           MENU          ")
 		fmt.Println("_________________________")
@@ -19,53 +19,61 @@ func main() {
 		fmt.Println("5. Area da Circunferência")
 		fmt.Println("6. Soma dos quadrados    ")
 		fmt.Println("7. Quadrado da soma      ")
-		fmt.Println("8. Palindromo            ")
-		fmt.Scanf("%d", &choice)
+		fmt.Println("8. Palíndromo            ")
+		fmt.Println("9. ScrabbleScore         ")
+		fmt.Println("_________________________")
+		fmt.Println("10. Sair do Sistema       ")
+		_, err := fmt.Scan(&choice)
+		if err != nil {
+			fmt.Println("Erro ao ler entrada:", err)
+			continue
+		}
 
 		switch choice {
 		case 1:
-			twoFer()
+			TwoFer()
 		case 2:
-			troca()
+			Troca()
 		case 3:
-			ajusteSalarial()
+			AjusteSalarial()
 		case 4:
-			fizzBuzz()
+			FizzBuzz()
 		case 5:
-			areaDaCircunferencia()
+			AreaDaCircunferencia()
 		case 6:
-			somaDosQuadrados()
+			SomaDosQuadrados()
 		case 7:
-			quadradoDaSoma()
+			QuadradoDaSoma()
 		case 8:
-			palindromo()
+			Palindromo()
+		case 9:
+			ScrabbleScore()
+		case 10:
+			fmt.Println("Saindo do Sistema")
 		default:
-			fmt.Println("Opção Invalida ")
-		}
-
-		var next int8
-		fmt.Println("Deseja Continua?")
-		fmt.Scan(&next)
-
-		if next == 2 {
-			break
+			fmt.Println("Opção Inválida")
 		}
 	}
+
 }
 
-func twoFer() {
-	var name string = "você"
+func TwoFer() {
+	var name string
 
 	fmt.Println("______________________")
 	fmt.Println("        Two-Fer       ")
 	fmt.Println("______________________")
 	fmt.Println(">Entre com um Nome:")
-	fmt.Scanf("%s", &name)
+	fmt.Scan(&name)
 
-	fmt.Println("Um para %s", name)
+	if name == "" {
+		name = "você"
+	}
+
+	fmt.Println("Um para", name, "um para mim")
 }
 
-func troca() {
+func Troca() {
 	var a, b string
 
 	fmt.Println("______________________")
@@ -81,7 +89,7 @@ func troca() {
 	fmt.Printf("Primeiro valor %s, segundo valor %s \n", a, b)
 }
 
-func ajusteSalarial() {
+func AjusteSalarial() {
 	var salario float32
 	var reajuste float32
 
@@ -98,7 +106,7 @@ func ajusteSalarial() {
 	fmt.Printf("O valor do salário com reajuste é de: %0.2f \n", salario)
 }
 
-func fizzBuzz() {
+func FizzBuzz() {
 	var inicial int8
 	var final int8
 
@@ -123,7 +131,7 @@ func fizzBuzz() {
 	}
 }
 
-func areaDaCircunferencia() {
+func AreaDaCircunferencia() {
 	var raio float32
 
 	fmt.Println("__________________________________________")
@@ -137,7 +145,7 @@ func areaDaCircunferencia() {
 	fmt.Printf("A área da circunferência com raio %.2f é %.2f\n", raio, area)
 }
 
-func somaDosQuadrados() {
+func SomaDosQuadrados() {
 	var valor1, valor2, valor3 int
 
 	fmt.Println("__________________________________________")
@@ -155,7 +163,7 @@ func somaDosQuadrados() {
 	fmt.Printf("A soma dos quadrados dos valores %d, %d e %d é: %d\n", valor1, valor2, valor3, somaQuadrados)
 }
 
-func quadradoDaSoma() {
+func QuadradoDaSoma() {
 	var valor1, valor2, valor3 int
 
 	fmt.Println("__________________________________________")
@@ -174,7 +182,7 @@ func quadradoDaSoma() {
 	fmt.Printf("O quadrado da soma dos valores %d, %d e %d é: %d\n", valor1, valor2, valor3, quadradoSoma)
 }
 
-func palindromo() {
+func Palindromo() {
 	var palavra string
 
 	fmt.Println("____________________")
